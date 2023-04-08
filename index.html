@@ -38,16 +38,22 @@
 
 	const mLittleton = L.marker([34.0209116, -5.0308296]).bindPopup('This is my Home.').addTo(cities);
 	
-var map = L.map('map').setView([34.0209116, -5.0308296], 18);
+//var map = L.map('map').setView([34.0209116, -5.0308296], 18);
+const osm = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		maxZoom: 18,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	});
 
-    var mapLink = '<a href="https://www.esri.com/">Esri</a>';
-    var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
-
-    L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: '&copy; '+mapLink+', '+wholink,
-        maxZoom: 18,
-        }).addTo(map);
+	const map = L.map('map', {
+		center: [34.0209116, -5.0308296],
+		zoom: 18,
+		layers: [osm, cities]
+	});
+    //L.tileLayer(
+      //  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        //attribution: '&copy; Abdessattar Elyagoubi,
+        //maxZoom: 18,
+        //}).addTo(map);
 	
 </script>
 
