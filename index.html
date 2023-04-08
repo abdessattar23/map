@@ -37,36 +37,18 @@
 	const cities = L.layerGroup();
 
 	const mLittleton = L.marker([34.0209116, -5.0308296]).bindPopup('This is my Home.').addTo(cities);
-	const mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
-	const mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
- 
-	const streets = L.tileLayer(mbUrl, {id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+	
+var map = L.map('map').setView([34.0209116, -5.0308296], 20);
 
-	const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	});
+    var mapLink = '<a href="http://www.esri.com/">Esri</a>';
+    var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 
-	const map = L.map('map', {
-		center: [34.0209116, -5.0308296],
-		zoom: 10,
-		layers: [osm, cities]
-	});
-
-	const baseLayers = {
-		'OpenStreetMap': osm,
-		'Streets': streets
-	};
-
-	const overlays = {
-		'Cities': cities
-	};
-const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
-
-
-
-	const satellite = L.tileLayer(mbUrl, {id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
-	layerControl.addBaseLayer(satellite, 'Satellite');
+    L.tileLayer(
+        'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; '+mapLink+', '+wholink,
+        maxZoom: 20,
+        }).addTo(map);
+	
 </script>
 
 
