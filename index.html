@@ -38,15 +38,15 @@
 
 	const mLittleton = L.marker([34.0209116, -5.0308296]).bindPopup('This is my Home.').addTo(cities);
 	
-var map = L.map('map').setView([34.0209116, -5.0308296], 20);
+var map = L.map('map').setView([34.0209116, -5.0308296], 18);
 
-    var mapLink = '<a href="http://www.esri.com/">Esri</a>';
+    var mapLink = '<a href="https://www.esri.com/">Esri</a>';
     var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 
     L.tileLayer(
-        'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: '&copy; '+mapLink+', '+wholink,
-        maxZoom: 20,
+        maxZoom: 18,
         }).addTo(map);
 	
 </script>
